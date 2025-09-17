@@ -1,5 +1,6 @@
 import streamlit as st
 
+<<<<<<< HEAD
 st.title("サンプルアプリ②: 少し複雑なWebアプリ")
 
 st.write("##### 動作モード1: 文字数カウント")
@@ -43,3 +44,7 @@ if st.button("実行"):
 
         else:
             st.error("身長と体重をどちらも入力してください。")
+=======
+st.title("Hello, Streamlit!")
+st.write("最初のデプロイテストです。")
+>>>>>>> a89a8af6e20a854b85ef4937fa57950bab7f8930
