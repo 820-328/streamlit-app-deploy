@@ -1,50 +1,39 @@
 import streamlit as st
 
-<<<<<<< HEAD
-st.title("サンプルアプリ②: 少し複雑なWebアプリ")
+st.set_page_config(page_title="サンプル: かんたんWebアプリ", page_icon="✅")
 
-st.write("##### 動作モード1: 文字数カウント")
-st.write("入力フォームにテキストを入力し、「実行」ボタンを押すことで文字数をカウントできます。")
-st.write("##### 動作モード2: BMI値の計算")
-st.write("身長と体重を入力することで、肥満度を表す体型指数のBMI値を算出できます。")
+st.title("サンプル: かんたんWebアプリ")
+st.write("##### 機能①: 文字数カウント")
+st.write("入力したテキストの文字数をカウントします。")
+st.write("##### 機能②: BMI計算")
+st.write("身長と体重からBMIを計算します。")
 
 selected_item = st.radio(
-    "動作モードを選択してください。",
-    ["文字数カウント", "BMI値の計算"]
+    "使いたい機能を選んでください：",
+    ["文字数カウント", "BMI計算"]
 )
 
 st.divider()
 
 if selected_item == "文字数カウント":
-    input_message = st.text_input(label="文字数のカウント対象となるテキストを入力してください。")
-    text_count = len(input_message)
-
-else:
-    height = st.text_input(label="身長（cm）を入力してください。")
-    weight = st.text_input(label="体重（kg）を入力してください。")
-
-if st.button("実行"):
-    st.divider()
-
-    if selected_item == "文字数カウント":
+    input_message = st.text_input(label="文字数を知りたいテキストを入力してください")
+    if st.button("計算"):
+        st.divider()
         if input_message:
-            st.write(f"文字数: **{text_count}**")
-
+            st.write(f"文字数: **{len(input_message)}**")
         else:
-            st.error("カウント対象となるテキストを入力してから「実行」ボタンを押してください。")
-
-    else:
+            st.error("テキストを入力してください。")
+else:
+    height = st.text_input(label="身長（cm）を入力してください")
+    weight = st.text_input(label="体重（kg）を入力してください")
+    if st.button("計算"):
+        st.divider()
         if height and weight:
             try:
-                bmi = round(int(weight) / ((int(height)/100) ** 2), 1)
-                st.write(f"BMI値: {bmi}")
-
-            except ValueError as e:
-                st.error("身長と体重は数値で入力してください。")
-
+                h = float(height) / 100
+                bmi = round(float(weight) / (h ** 2), 1)
+                st.write(f"BMI: **{bmi}**")
+            except ValueError:
+                st.error("数値で入力してください。")
         else:
-            st.error("身長と体重をどちらも入力してください。")
-=======
-st.title("Hello, Streamlit!")
-st.write("最初のデプロイテストです。")
->>>>>>> a89a8af6e20a854b85ef4937fa57950bab7f8930
+            st.error("身長と体重の両方を入力してください。")
